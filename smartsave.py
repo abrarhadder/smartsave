@@ -108,3 +108,26 @@ class SmartSaveUI(QtWidgets.QDialog):
                 layout.addWidget(self.ver_sbx, 1, 4)
                 layout.addWidget(self.ext_lbl, 1, 5)
                 return layout
+
+            def _create_filename_headers(self):
+                self.descriptor_header_lbl = QtWidgets.QLabel("Descriptor")
+                self.descriptor_header_lbl.setStyleSheet("font: bold")
+                self.task_header_lbl = QtWidgets.QLabel("Task")
+                self.task_header_lbl.setStyleSheet("font: bold")
+                self.ver_header_lbl = QtWidgets.QLabel("Version")
+                self.ver_header_lbl.setStyleSheet("font: bold")
+                layout = QtWidgets.QGridLayout()
+                layout.addWidget(self.descriptor_header_lbl, 0, 0)
+                layout.addWidget(self.task_header_lbl, 0, 2)
+                layout.addWidget(self.ver_header_lbl, 0, 4)
+                return layout
+
+            def _create_folder_ui(self):
+                default_folder = Path(os.getcwd())
+                default_folder = default_folder / "scenes"
+                self.folder_le = QtWidgets.QLineEdit(default_folder)
+                self.folder_browse_btn = QtWidgets.QPushButton("...")
+                layout = QtWidgets.QHBoxLayout()
+                layout.addWidget(self.folder_le)
+                layout.addWidget(self.folder_browse_btn)
+                return layout
