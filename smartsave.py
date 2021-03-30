@@ -62,3 +62,10 @@ class SmartSaveUI(QtWidgets.QDialog):
             """save the scene"""
             self._set_scenefile_properties_from_ui()
             self.scenefile.save()
+
+    def _set_scenefile_properties_from_ui(self):
+        self.scenefile.folder_path = self.folder_le.text()
+        self.scenefile.descriptor = self.descriptor_le.text()
+        self.scenefile.task = self.task_le.text()
+        self.scenefile.ver = self.ver_sbx.value()
+        self.scenefile.ext = self.ext_lbl.text()
