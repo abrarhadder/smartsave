@@ -79,3 +79,32 @@ class SmartSaveUI(QtWidgets.QDialog):
                 options=QtWidgets.QFileDialog.ShowDirsOnly |
                         QtWidgets.QFileDialog.DontResolveSymlinks)
             self.folder_le.setText(folder)
+
+            def _create_buttons_ui(self):
+                self.save_btn = QtWidgets.QPushButton("Save")
+                self.save_inc_btn = QtWidgets.QPushButton("Save Increment")
+                layout = QtWidgets.QHBoxLayout()
+                layout.addWidget(self.save_btn)
+                layout.addWidget(self.save_inc_btn)
+                return layout
+
+            def _create_filename_ui(self):
+                layout = self._create_filename_headers()
+                self.descriptor_le = QtWidgets.QLineEdit(
+                    self.scenefile.descriptor)
+                self.descriptor_le.setMinimumWidth(100)
+                self.task_le = QtWidgets.QLineEdit(self.scenefile.task)
+                self.task_le.setFixedWidth(75)
+                self.ver_sbx = QtWidgets.QSpinBox()
+                self.ver_sbx.setButtonSymbols(
+                    QtWidgets.QAbstractSpinBox.PlusMinus)
+                self.ver_sbx.setFixedWidth(50)
+                self.ver_sbx.setValue(self.scenefile.ver)
+                self.ext_lbl = QtWidgets.QLabel(".ma")
+                layout.addWidget(self.descriptor_le, 1, 0)
+                layout.addWidget(QtWidgets.QLabel("_"), 1, 1)
+                layout.addWidget(self.task_le, 1, 2)
+                layout.addWidget(QtWidgets.QLabel("_v"), 1, 3)
+                layout.addWidget(self.ver_sbx, 1, 4)
+                layout.addWidget(self.ext_lbl, 1, 5)
+                return layout
